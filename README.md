@@ -17,3 +17,7 @@ npm run build
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Used technology
+- [Rick and Morty API](https://rickandmortyapi.com/)
+- [Bulma CSS Framework](https://bulma.io/)
