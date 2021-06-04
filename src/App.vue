@@ -1,11 +1,13 @@
 <template>
-	<div class="container is-max-desktop is-flex is-flex-direction-column">
+	<div class="container is-max-desktop">
 		<h1 class="title is-1">Rick and Morty Gallery</h1>
-		<a class="button is-primary" @click="prev()">Previous</a>
-		<h5 class="title is-5">Page: {{ this.page }}</h5>
-		<a class="button is-primary" @click="next()">Next</a>
-		<div class="columns" v-for="char in charactersObject" :key="char">
-			<div class="column box is-one-fifth">
+		<div class="columns">
+			<a class="column button is-primary" @click="prev()">Previous</a>
+			<h5 class="column title is-5">Page: {{ this.page }}</h5>
+			<a class="column button is-primary" @click="next()">Next</a>
+		</div>
+		<div class="columns is-3 is-flex is-flex-wrap-wrap">
+			<div class="column is-one-third box" v-for="char in charactersObject" :key="char">
 				<figure class="image is-128x128">
 					<img :src="char.image" alt="">
 				</figure>
