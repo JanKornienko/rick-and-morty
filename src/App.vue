@@ -5,9 +5,10 @@
 			<input class="input is-primary" type="text" placeholder="Search" v-model="search" @input="load(1)">
 			<div class="select is-primary">
 				<select v-model="status">
-					<option key="0" label="Alive" value="alive"></option>
-					<option key="1" label="Dead" value="dead"></option>
-					<option key="2" label="Unknown" value="unknown"></option>
+					<option selected key="0" label="All" value=""></option>
+					<option key="1" label="Alive" value="alive"></option>
+					<option key="2" label="Dead" value="dead"></option>
+					<option key="3" label="Unknown" value="unknown"></option>
 				</select>
 			</div>
 			<div class="box" v-for="char in characters.results" :key="char">
@@ -57,6 +58,11 @@
 				}).fail(() => {
 					this.characters = null;
 				});
+			}
+		},
+		watch: {
+			status: function() {
+				this.load(1);
 			}
 		}
 	};
