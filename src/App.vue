@@ -21,10 +21,10 @@
 						<img class="photo" :src="char.image">
 					</figure>
 					<div class="is-flex is-flex-direction-column is-align-items-center">
-						<h4 class="title is-4 mb-5">{{ char.name }}</h4>
-						<h5 class="subtitle is-5 mb-1">{{ char.species }} - {{ char.gender }}</h5>
-						<h5 class="subtitle is-5 mb-1">{{ char.status }}</h5>
-						<h5 class="subtitle is-5 mb-1">{{ char.origin.name }}</h5>
+						<h4 class="title is-4 mb-5 has-text-white">{{ char.name }}</h4>
+						<h5 class="subtitle is-5 mb-1 has-text-white">{{ char.species }} - {{ char.gender }}</h5>
+						<h5 class="subtitle is-5 mb-1 has-text-white" :class="statusColor(char.status)">{{ char.status }}</h5>
+						<h5 class="subtitle is-5 mb-1 has-text-white">{{ char.origin.name }}</h5>
 					</div>
 				</div>
 			</div>
@@ -62,6 +62,16 @@
 				}).fail(() => {
 					this.characters = null;
 				});
+			},
+			statusColor(status) {
+				switch (status) {
+					case 'Alive':
+						return 'has-text-success';
+					case 'Dead':
+						return 'has-text-danger';
+					case 'unknown':
+						return 'has-text-white';
+				};
 			}
 		},
 		watch: {
