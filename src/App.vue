@@ -16,12 +16,12 @@
 				</div>
 			</div>
 			<div class="is-flex is-flex-wrap-wrap is-justify-content-center columns mt-5">
-				<div class="box is-flex is-flex-direction-column is-justify-content-center is-align-items-center column is-one-quarter mx-3" v-for="char in characters.results" :key="char">
+				<div class="box is-flex is-flex-direction-column is-justify-content-center is-align-items-center column is-one-quarter mx-3 py-5" v-for="char in characters.results" :key="char">
 					<figure class="image is-128x128 mb-3">
 						<img class="photo" :src="char.image">
 					</figure>
 					<div class="is-flex is-flex-direction-column is-align-items-center">
-						<h4 class="title is-4 mb-5 has-text-white">{{ char.name }}</h4>
+						<h4 class="title is-4 mb-5 has-text-white is-flex-is-justify-content-center">{{ char.name }}</h4>
 						<h5 class="subtitle is-5 mb-1 has-text-white">{{ char.species }} - {{ char.gender }}</h5>
 						<h5 class="subtitle is-5 mb-1 has-text-white" :class="statusColor(char.status)">{{ char.status }}</h5>
 						<h5 class="subtitle is-5 mb-1 has-text-white">{{ char.origin.name }}</h5>
