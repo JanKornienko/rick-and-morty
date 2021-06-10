@@ -1,33 +1,35 @@
 <template>
 	<div class="container">
-		<h1 class="title is-1">Rick and Morty Gallery</h1>
+		<h1 class="title is-1 is-flex is-justify-content-center">Rick and Morty Gallery</h1>
 		<div v-if="characters != null">
-			<div>
-				<input class="input is-primary" type="text" placeholder="Search" v-model="search" @input="load(1)">
-				<div class="select is-primary">
-					<select v-model="status" placeholder="Status">
-						<option selected key="0" label="All" value=""></option>
-						<option key="1" label="Alive" value="alive"></option>
-						<option key="2" label="Dead" value="dead"></option>
-						<option key="3" label="Unknown" value="unknown"></option>
-					</select>
-				</div>
-			</div>
-			<div class="is-flex is-flex-wrap-wrap is-justify-content-center columns">
-				<div class="box column is-one-quarter mx-3" v-for="char in characters.results" :key="char">
-					<figure class="image is-128x128">
-						<img class="photo" :src="char.image">
-					</figure>
-					<div>
-						<h5 class="title is-5">{{ char.name }}</h5>
-						<h5 class="title is-5">{{ char.species }} - {{ char.gender }}</h5>
-						<h5 class="title is-5">{{ char.status }}</h5>
-						<h5 class="title is-5">{{ char.origin.name }}</h5>
+			<div class="is-flex is-justify-content-center">
+				<div class="columns column is-four-fifths">
+					<input class="input is-primary column is-four-fifths" type="text" placeholder="Search" v-model="search" @input="load(1)">
+					<div class="select is-primary column is-flex is-justify-content-flex-end is-align-items-center">
+						<select v-model="status" placeholder="Status">
+							<option selected key="0" label="All" value=""></option>
+							<option key="1" label="Alive" value="alive"></option>
+							<option key="2" label="Dead" value="dead"></option>
+							<option key="3" label="Unknown" value="unknown"></option>
+						</select>
 					</div>
 				</div>
 			</div>
-			<div class="pagination">
-				<ul class="pagination-list">
+			<div class="is-flex is-flex-wrap-wrap is-justify-content-center columns mt-5">
+				<div class="box is-flex is-flex-direction-column is-justify-content-center is-align-items-center column is-one-quarter mx-3" v-for="char in characters.results" :key="char">
+					<figure class="image is-128x128 mb-3">
+						<img class="photo" :src="char.image">
+					</figure>
+					<div class="is-flex is-flex-direction-column is-align-items-center">
+						<h4 class="title is-4 mb-5">{{ char.name }}</h4>
+						<h5 class="subtitle is-5 mb-1">{{ char.species }} - {{ char.gender }}</h5>
+						<h5 class="subtitle is-5 mb-1">{{ char.status }}</h5>
+						<h5 class="subtitle is-5 mb-1">{{ char.origin.name }}</h5>
+					</div>
+				</div>
+			</div>
+			<div class="pagination is-flex is-justify-content-center">
+				<ul class="pagination-list is-flex is-justify-content-center column is-four-fifths">
 					<li class="pagination-link" :class="{ 'is-current': page == currentPage }" v-for="page in characters.info.pages" :key="page" @click="load(page)">{{ page }}</li>
 				</ul>
 			</div>
